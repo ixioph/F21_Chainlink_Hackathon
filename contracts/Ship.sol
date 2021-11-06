@@ -20,5 +20,15 @@ contract Ship is ERC1155 {
     Component[] public s_shipParts;
     CrewMember[] public s_shipCrew;
 
-    constructor("Space Ship", "SHIP") {}
+    constructor("Space Ship", "SHIP") {
+        // ...
+    }
+
+    remove_part();
+    remove_crew();
+    add_part();
+    add_crew();
+    swap_part();
+    swap_crew();
+    rest();
 }
