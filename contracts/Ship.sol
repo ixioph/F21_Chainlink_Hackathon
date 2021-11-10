@@ -31,6 +31,7 @@ contract Ship is ERC1155, VRFConsumerBase {
     mapping(bytes32 => string) public requestIdToTokenURI;
     mapping(uint256 => Build) public tokenIdToShip;
     mapping(bytes32 => uint256) public requestIdToTokenId;
+    mapping(uint256 => uint256) public partIdToShipId;
 
     constructor(address _VRFCoordinator, address _link, bytes32 _keyhash) public 
     VRFConsumerBase(_VRFCoordinator, _link) 
@@ -60,7 +61,9 @@ contract Ship is ERC1155, VRFConsumerBase {
         requestIdToTokenId[requestId] = itemId;
     }
 
-    remove_part();
+    function remove_part(uint256 partId, uint256 shipId) {
+        partIdToShipId[partId] = null; // how do we treat "empty" parts? 
+    }
     remove_crew();
     add_part();
     add_crew();
